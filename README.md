@@ -4,7 +4,7 @@ A reproducible local environment for the **Star Schema Benchmark (SSB)** using P
 
 The repository contains everything required to generate SSB datasets, run PostgreSQL locally, load the data, and execute benchmark queries.
 
-Generated data and PostgreSQL files are stored locally under `.local/` and are **not committed to Git**.
+Generated data and PostgreSQL files are stored locally under `.local/`.
 
 ## Requirements
 
