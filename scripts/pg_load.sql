@@ -1,16 +1,20 @@
--- 
--- set the path variable to the full directory path containing the flat files 
---
-\set path '/repos/ssb-kit/dbgen/'
+\if :{?data_dir}
+\else
+  \echo 'ERROR: data_dir was not provided'
+  \echo 'Usage: psql -v data_dir=/path/to/sf1 -f scripts/pg_load.sql'
+  \quit
+\endif
 
-\set d :path 'date.tbl'     
-\set c :path 'customer.tbl' 
-\set p :path 'part.tbl'     
-\set s :path 'supplier.tbl' 
-\set l :path 'lineorder.tbl'
+\set d :data_dir '/date.tbl'
+\set c :data_dir '/customer.tbl'
+\set p :data_dir '/part.tbl'
+\set s :data_dir '/supplier.tbl'
+\set l :data_dir '/lineorder.tbl'
 
-copy dim_date  from :'d' DELIMITER '|' NULL '';
-copy customer  from :'c' DELIMITER '|' NULL '';
-copy part      from :'p' DELIMITER '|' NULL '';
-copy supplier  from :'s' DELIMITER '|' NULL '';
-copy lineorder from :'l' DELIMITER '|' NULL '';
+\echo 'Loading SSB data from :'data_dir
+
+COPY dim_date  FROM :'d' DELIMITER '|' NULL '';
+COPY customer  FROM :'c' DELIMITER '|' NULL '';
+COPY part      FROM :'p' DELIMITER '|' NULL '';
+COPY supplier  FROM :'s' DELIMITER '|' NULL '';
+COPY lineorder FROM :'l' DELIMITER '|' NULL '';

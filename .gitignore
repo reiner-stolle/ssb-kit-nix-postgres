@@ -1,4 +1,42 @@
-*.o
+# Local SSB environment
+.local/
+
+# Generated benchmark data
 *.tbl
-dbgen
-qgen
+*.bin
+
+# PostgreSQL runtime files
+*.pid
+*.sock
+*.log
+
+# Build artifacts
+*.o
+*.a
+*.so
+
+# Crash dumps
+core
+core.*
+*.core
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Local configuration / secrets
+.env
+.env.*
+
+
+# Build artifacts
+dbgen/dbgen
+dbgen/*.o
+
+# Local generated data and PostgreSQL instance
+.local/
